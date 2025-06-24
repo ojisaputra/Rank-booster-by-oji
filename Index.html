@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RANK BOOSTER 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Transisi roket ke atas/pojok */
+.fly-away-top {
+  transform: translate(-50%, -600px) scale(1.3);
+  opacity: 0;
+}
+
+.fly-away-corner {
+  transform: translate(200px, -600px) scale(1.3);
+  opacity: 0;
+}
+
+    .rocket {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      opacity: 0;
+      pointer-events: none;
+      font-size: 4rem;
+    }
+    .launch {
+      animation: rocketLaunch 6s ease-out forwards;
+    }
+    @keyframes rocketLaunch {
+      0% { bottom: 100px; opacity: 1; transform: translateX(-50%) translateY(0); }
+      50% { bottom: 80%; opacity: 1; transform: translateX(-50%) translateY(-10px); }
+      100% { bottom: 120%; opacity: 0; transform: translateX(-50%) rotate(20deg); }
+    }
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: fadeIn 0.6s ease forwards;
+      opacity: 0;
+    }
+    .feature-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .toggle-feature {
+      padding: 0.4rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .active-btn { background: #10b981; color: white; }
+    .inactive-btn { background: #374151; color: #d1d5db; }
+    .glow-button { animation: glow 2s infinite alternate; }
+    @keyframes glow {
+      from { box-shadow: 0 0 5px #00a8ff; }
+      to { box-shadow: 0 0 20px #00a8ff, 0 0 30px #00a8ff; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideDown {
+       from { opacity: 0; transform: translateY(-20px);}
+      to { opacity: 1;
+        transform: translateY(0);
+       }
+    }
+    .fade-slide { animation: fadeSlideDown 0.9s ease-out;
+   }
+@keyframes float {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-12px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow-rocket {
+  text-shadow: 0 0 8px #00bfff, 0 0 16px #5f00ff, 0 0 24px #00bfff;
+}
+@keyframes rocket-blast {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  70% {
+    transform: translateX(-50%) translateY(-30px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-60px) scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-rocket-blast {
+  animation: rocket-blast 2.2s ease-out forwards;
+}
+
+.glow-rocket {
+  text-shadow: 0 0 8px #00bfff, 0 0 16px #5f00ff, 0 0 24px #00bfff;
+}
+@keyframes flame {
+  0%, 100% { transform: scaleY(1); opacity: 0.8; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+}
+.flame-animation {
+  animation: flame 0.6s infinite ease-in-out;
+  filter: blur(1px);
+  box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+}
+  </style>
+</head>
+<body class="py-8 px-4">
+
+ <!-- Notifikasi Download APK -->
+     <div id="apkNotification" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 
+       bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-xl shadow-lg z-50 
+       flex items-center justify-between w-[90%] max-w-md border border-blue-400 fade-slide transition-all duration-300">
+      <a href="https://play.google.com/store/apps/details?id=com.mobile.legends" 
+      target="_blank" class="flex items-center gap-3 hover:underline">
+     <i class="fas fa-download text-blue-400 text-xl"></i>
+     <span>Update MLBB kamu ke Versi Terbaru❗</span>
+     </a>
+    <button onclick="hideApkNotification()" class="text-gray-300 hover:text-white">
+      <i class="fas fa-times"></i>
+     </button>
+  </div>
+
+
+  <!-- Scanner AI -->
+  <div id="aiScanner" class="fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center z-40 hidden">
+    <div class="w-40 h-40 border-4 border-blue-500 rounded-full animate-spin mb-6"></div>
+    <p class="text-white font-bold text-xl animate-pulse">Mendeteksi Sistem ML...</p>
+  </div>
+  
+  <!-- Rocket -->
+  <div id="rocket" class="rocket">
+    <i class="fas fa-rocket fa-3x text-white"></i>
+  </div>
+  
+<!-- Login -->
+<div id="loginPage" class="max-w-sm mx-auto bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col justify-between min-h-[520px] relative overflow-hidden">
+  <div>
+    <h2 class="text-2xl font-bold text-center mb-6">Login ke Rank Booster</h2>
+    <input id="username" type="text" placeholder="Username" class="w-full mb-4 px-4 py-2 rounded bg-gray-800 text-white">
+    <input id="password" type="password" placeholder="Password" class="w-full mb-4 px-4 py-2 rounded bg-gray-800 text-white">
+    <button onclick="checkLogin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded">Masuk</button>
+    <p id="loginError" class="text-red-500 text-center mt-4 hidden">Username atau Password salah!</p>
+  </div>
+
+<!-- Ornamen animasi roket besar glow + opacity -->
+<div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 text-[120px] text-white animate-float glow-rocket opacity-55 pointer-events-none select-none">
+  🚀
+</div>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-400 text-sm mt-6 pt-4 border-t border-gray-700">
+    <div class="flex justify-center items-center gap-2 mb-1">
+      <i class="fas fa-envelope text-blue-400"></i>
+      <a href="mailto:oji404.developer@gmail.com" class="hover:underline">oji404.developer@gmail.com</a>
+    </div>
+    <p>© 2025 Website Rank Booster by OJI. All rights reserved.</p>
+  </footer>
+</div>
+
+  <!-- App -->
+  <div id="mainApp" class="hidden max-w-2xl mx-auto">
+    <h1 class="text-3xl text-center font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-10 animate-pulse">RANK BOOSTER MLBB</h1>
+
+    <!-- Fitur -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+
+      <!-- Fitur lainnya disingkat, kamu bisa copy seperti ini -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-people-group text-xl text-blue-400"></i>
+            <span class="font-semibold">TEAM PRO</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-robot text-xl text-purple-400"></i>
+            <span class="font-semibold">ENEMY NOOB/BOT</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-bolt text-xl text-yellow-400"></i>
+            <span class="font-semibold">DAMAGE UP +50%</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-spinner text-xl text-red-400"></i>
+            <span class="font-semibold">ENEMY LAG 78%</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+          </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-stopwatch text-xl text-gray-400"></i>
+            <span class="font-semibold">COOLDOWN REDUCTION +15%</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-rocket text-xl text-pink-400"></i>
+            <span class="font-semibold">ATTACK SPEED +20%</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-wifi text-xl text-indigo-400"></i>
+            <span class="font-semibold">STABIL PING</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+          </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-signal text-xl text-indigo-400"></i>
+            <span class="font-semibold">FIX LAG</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-user-shield text-xl text-teal-400"></i>
+            <span class="font-semibold">ANTI BANNED 100%</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-fire text-xl text-orange-400"></i>
+            <span class="font-semibold">AUTO WINSTREAK 99%</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+        <div class="feature-card flex justify-between items-center px-4 py-3 rounded-lg">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-running text-xl text-white-400"></i>
+            <span class="font-semibold">FAST FARMING</span>
+          </div>
+          <button class="toggle-feature inactive-btn">Aktifkan</button>
+        </div>
+      <div class="feature-card flex flex-col gap-2 px-4 py-3 rounded-lg">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-earth-asia text-xl text-green-400"></i>
+            <span class="font-semibold">RW-ROOM WANGI</span>
+          </div>
+          <button class="toggle-feature inactive-btn" data-feature="rw">Aktifkan</button>
+        </div>
+        <select id="rwServerSelect" class="hidden bg-gray-700 text-white rounded px-3 py-2">
+          <option disabled selected>Pilih Server RW</option>
+          <option>Kamboja</option>
+          <option>Thailand</option>
+          <option>Myanmar</option>
+          <option>Laos</option>
+          <option>India</option>
+          <option>Jepang</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Panel -->
+    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 mb-8 animate-fadeIn">
+      <h2 class="text-xl font-bold mb-4 text-center">Panel Kontrol Booster</h2>
+      <!-- Mode -->
+      <div class="mb-4">
+        <label class="block text-gray-300 mb-2">Mode</label>
+        <select class="w-full bg-gray-700 rounded-lg px-4 py-2 text-white">
+            <option>Classic</option>
+             <option>Rank</option>
+            <option>Brawl</option>
+        </select>
+      </div>
+      <!-- Rank Saat Ini -->
+      <div class="mb-4">
+        <label class="block text-gray-300 mb-2">Rank Saat Ini</label>
+        <select class="w-full bg-gray-700 rounded-lg px-4 py-2 text-white">
+          <option>Warrior</option>
+            <option>Elite</option>
+            <option>Master</option>
+            <option>GrandMaster</option>
+            <option>Epic</option>
+            <option>Legend</option>
+            <option>Mythic</option>
+         <option>Mythical Honor</option>
+        </select>
+      </div>
+      <!-- Target -->
+      <div class="mb-4">
+        <label class="block text-gray-300 mb-2">Target Rank</label>
+        <select class="w-full bg-gray-700 rounded-lg px-4 py-2 text-white">
+          <option>Elite</option>
+            <option>Master</option>
+            <option>GrandMaster</option>
+            <option>Epic</option>
+            <option>Legend</option>
+            <option>Mythic</option>
+         <option>Mythical Honor</option>
+         <option>Mythical Glory</option>
+         <option>Mythical Immortal</option>
+        </select>
+      </div>
+      <!-- Boost Intensity -->
+      <div class="mb-6">
+          <label class="block text-gray-300 mb-2">Intensitas Boost</label>
+          <div class="h-2 rounded bg-gray-700 mb-1">
+            <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded" style="width: 92%"></div>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400">
+            <option>10%</option>
+            <option>50%</option>
+            <option>100%</option>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button id="startButton" class="glow-button bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-3 rounded-full font-bold text-white hover:from-blue-600 hover:to-purple-700 transition-all">
+            MULAI BOOSTING
+          </button>
+        </div>
+      </div>
+
+    <!-- Status Boost -->
+    <div id="statusPanel" class="hidden bg-gray-800 bg-opacity-50 rounded-xl p-6 animate-fadeIn">
+      <h2 class="text-xl font-bold mb-4 text-center">Status Boosting</h2>
+      <div class="mb-4">
+        <div class="flex justify-between mb-1">
+          <span class="text-gray-300">Mulai Boosting</span>
+          <span id="progressPercent" class="text-blue-400">0%</span>
+        </div>
+        <div class="h-2 bg-gray-700 rounded">
+          <div id="progressFill" class="h-full bg-blue-500 rounded" style="width: 0%"></div>
+        </div>
+      </div>
+      <div id="statusMessages" class="text-sm text-gray-300 space-y-2">
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+          <span>Menghubungkan ke server ML...</span>
+        </div>
+      </div>
+      <div id="completeSection" class="hidden mt-6 text-center">
+      <div class="text-green-400 mb-4">
+        <i class="fas fa-check-circle fa-4x mx-auto mb-2"></i>
+        <p class="text-xl font-bold">Boost Selesai!</p>
+     </div>
+        <p class="mb-4">Aplikasi Mobile Legends akan diluncurkan otomatis.</p>
+         <button onclick="resetBooster()" class="bg-gray-700 px-6 py-2 rounded-lg text-white hover:bg-gray-600">Mulai Ulang Booster</button>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    function checkLogin() {
+  const user = document.getElementById('username').value;
+  const pass = document.getElementById('password').value;
+  const error = document.getElementById('loginError');
+  const notif = document.getElementById("apkNotification"); // Tambahkan baris ini
+
+  if (user === "Oji" && pass === "ojidevmod123") {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainApp").classList.remove("hidden");
+    document.getElementById("apkNotification").classList.remove("hidden");
+    notif.classList.add("fade-slide");
+  } else {
+    error.classList.remove("hidden");
+    notif.classList.add("fade-slide");
+  }
+}
+    function hideApkNotification() {
+       const notif = document.getElementById('apkNotification');
+       notif.classList.add('opacity-0');
+       notif.style.pointerEvents = 'none';
+
+       setTimeout(() => {
+       notif.classList.add('hidden');
+       notif.classList.remove('opacity-0');
+       notif.style.pointerEvents = 'auto';
+      }, 300);
+
+   setTimeout(() => {
+    notif.classList.remove('hidden');
+    notif.classList.add('fade-slide');
+   }, 45000); // Muncul ulang 45 detik kemudian
+  }
+    document.addEventListener('DOMContentLoaded', function () {
+      const rocket = document.getElementById('rocket');
+      const rwSelect = document.getElementById('rwServerSelect');
+      document.querySelectorAll('.toggle-feature').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isActive = btn.classList.toggle('active-btn');
+          btn.classList.toggle('inactive-btn');
+          btn.textContent = isActive ? 'Aktif' : 'Aktifkan';
+          if (btn.dataset.feature === 'rw') {
+            rwSelect.classList.toggle('hidden', !isActive);
+          }
+        });
+      });
+
+      document.getElementById('startButton').addEventListener('click', function () {
+        // Tampilkan scanner AI
+        document.getElementById('aiScanner').classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('aiScanner').classList.add('hidden');
+        }, 2000);
+
+        // Luncurkan rocket
+        rocket.classList.remove('hidden');
+        rocket.classList.add('launch');
+
+        // Arahkan ke ML
+        setTimeout(() => {
+          try { window.location.href = 'mobilelegends://'; } catch (e) {}
+        }, 6000);
+
+        document.getElementById('statusPanel').classList.remove('hidden');
+        simulateBoosting();
+      });
+    });
+
+    function simulateBoosting() {
+      let progress = 0;
+      const rwServer = document.getElementById('rwServerSelect');
+      const rwSelected = !rwServer?.classList.contains('hidden') ? rwServer.value : null;
+      const activeFeatures = Array.from(document.querySelectorAll('.toggle-feature.active-btn'))
+        .map(btn => btn.parentElement.querySelector('span').textContent);
+      if (rwSelected) activeFeatures.push(`Server RW: ${rwSelected}`);
+      const totalSteps = activeFeatures.length || 1;
+      const progressInterval = setInterval(() => {
+        progress += Math.floor(100 / totalSteps);
+        if (progress > 100) progress = 100;
+        document.getElementById('progressFill').style.width = progress + '%';
+        document.getElementById('progressPercent').textContent = progress + '%';
+        const index = Math.floor(progress / (100 / totalSteps));
+        if (index < activeFeatures.length) {
+          const statusDiv = document.createElement('div');
+          statusDiv.className = 'flex items-center';
+          statusDiv.innerHTML = `<div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div><span>${activeFeatures[index]}</span>`;
+          document.getElementById('statusMessages').appendChild(statusDiv);
+        }
+        if (progress >= 100) {
+          clearInterval(progressInterval);
+          document.getElementById('completeSection').classList.remove('hidden');
+        }
+      }, 700);
+    }
+
+    function resetBooster() {
+      document.getElementById('statusPanel').classList.add('hidden');
+      document.getElementById('completeSection').classList.add('hidden');
+      document.getElementById('progressFill').style.width = '0%';
+      document.getElementById('progressPercent').textContent = '0%';
+      document.getElementById('statusMessages').innerHTML = `
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+          <span>Menghubungkan ke server ML...</span>
+        </div>`;
+    }
+  </script>
+
+</body>
+</html>
